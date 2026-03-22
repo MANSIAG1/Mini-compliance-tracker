@@ -1,41 +1,71 @@
 import { useState, useEffect, useMemo } from "react";
-import { CLIENTS, TASKS, PRIORITIES } from "../data/seedData";
-import { isOverdue, loadFromStorage, saveToStorage } from "../utils/helpers";
+import { PRIORITIES } from "../data/seedData";
+import { isOverdue } from "../utils/helpers";
+
+const API = "http://localhost:5000/api";
 
 export function useCompliance() {
-  const [data, setData] = useState(() => {
-    const saved = loadFromStorage();
-    return saved || { clients: CLIENTS, tasks: TASKS };
-  });
+  const [clients,        setClients]        = useState([]);
+  const [allTasks,       setAllTasks]       = useState([]);
   const [selectedClient, setSelectedClient] = useState(null);
   const [filterStatus,   setFilterStatus]   = useState("All");
   const [filterCategory, setFilterCategory] = useState("All");
   const [search,         setSearch]         = useState("");
   const [sortBy,         setSortBy]         = useState("due_date");
   const [clientSearch,   setClientSearch]   = useState("");
+  const [loading,        setLoading]        = useState(true);
 
-  useEffect(() => { saveToStorage(data); }, [data]);
+  useEffect(() => {
+    fetch(`${API}/clients`)
+      .then(r => r.json())
+      .then(res => { if (res.success) setClients(res.data); })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
 
-  const updateTaskStatus = (taskId, newStatus) =>
-    setData(d => ({
-      ...d,
-      tasks: d.tasks.map(t => t.id === taskId ? { ...t, status: newStatus } : t),
-    }));
+  useEffect(() => {
+    if (!selectedClient) return;
+    fetch(`${API}/tasks?client_id=${selectedClient.id}`)
+      .then(r => r.json())
+      .then(res => { if (res.success) setAllTasks(res.data); })
+      .catch(() => {});
+  }, [selectedClient]);
 
-  const addTask = (task) =>
-    setData(d => ({ ...d, tasks: [...d.tasks, task] }));
+  const updateTaskStatus = async (taskId, newStatus) => {
+    try {
+      const res = await fetch(`${API}/tasks/${taskId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setAllTasks(prev => prev.map(t => t.id === taskId ? { ...t, status: newStatus } : t));
+      }
+    } catch {}
+  };
+
+  const addTask = async (task) => {
+    try {
+      const res = await fetch(`${API}/tasks`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(task),
+      });
+      const data = await res.json();
+      if (data.success) setAllTasks(prev => [...prev, data.data]);
+    } catch {}
+  };
 
   const selectClient = (client) => {
     setSelectedClient(client);
+    setAllTasks([]);
     setFilterStatus("All");
     setFilterCategory("All");
     setSearch("");
   };
 
-  const clientTasks = useMemo(
-    () => data.tasks.filter(t => t.client_id === selectedClient?.id),
-    [data.tasks, selectedClient]
-  );
+  const clientTasks = allTasks;
 
   const filteredTasks = useMemo(() => {
     let tasks = clientTasks;
@@ -65,21 +95,22 @@ export function useCompliance() {
   }), [clientTasks]);
 
   const globalStats = useMemo(() => ({
-    clients:    data.clients.length,
-    totalTasks: data.tasks.length,
-    overdue:    data.tasks.filter(isOverdue).length,
-    pending:    data.tasks.filter(t => t.status === "Pending").length,
-  }), [data]);
+    clients:    clients.length,
+    totalTasks: clients.length,
+    overdue:    allTasks.filter(isOverdue).length,
+    pending:    allTasks.filter(t => t.status === "Pending").length,
+  }), [clients, allTasks]);
 
   const filteredClients = useMemo(() =>
-    data.clients.filter(c =>
+    clients.filter(c =>
       c.company_name.toLowerCase().includes(clientSearch.toLowerCase())
-    ), [data.clients, clientSearch]);
+    ), [clients, clientSearch]);
 
   return {
-    data, selectedClient, filterStatus, filterCategory,
+    data: { clients, tasks: allTasks },
+    selectedClient, filterStatus, filterCategory,
     search, sortBy, clientSearch, clientTasks, filteredTasks,
-    stats, globalStats, filteredClients,
+    stats, globalStats, filteredClients, loading,
     setFilterStatus, setFilterCategory, setSearch,
     setSortBy, setClientSearch, selectClient,
     updateTaskStatus, addTask,
