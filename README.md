@@ -4,7 +4,7 @@ A full-stack web app to track compliance tasks across multiple clients.
 Built for CA firms to manage GST filings, TDS returns, payroll deadlines — all in one place.
 
 ## Live Demo
-🔗 [Add Vercel link here after deployment]
+🔗 [\[Add Vercel link here after deployment\]](https://compliance-tracker-two.vercel.app/)
 
 ## GitHub Repo
 🔗 https://github.com/MANSIAG1/Mini-compliance-tracker
