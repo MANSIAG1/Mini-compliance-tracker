@@ -1,121 +1,98 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from "react";
+import { useCompliance } from "./hooks/useCompliance";
+import Header        from "./components/Header";
+import ClientSidebar from "./components/ClientSidebar";
+import StatsRow      from "./components/StatsRow";
+import TaskFilters   from "./components/TaskFilters";
+import TaskCard      from "./components/TaskCard";
+import AddTaskModal  from "./components/AddTaskModal";
+import EmptyState    from "./components/EmptyState";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [showAddModal, setShowAddModal] = useState(false);
+  const {
+    data, selectedClient, filterStatus, filterCategory,
+    search, sortBy, clientSearch, filteredTasks,
+    stats, globalStats, filteredClients,
+    setFilterStatus, setFilterCategory, setSearch,
+    setSortBy, setClientSearch, selectClient,
+    updateTaskStatus, addTask,
+  } = useCompliance();
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
+    <div className="min-h-screen bg-gray-50 font-sans">
+      <Header globalStats={globalStats} />
+      <div className="flex h-[calc(100vh-64px)]">
+        <ClientSidebar
+          clients={filteredClients}
+          allTasks={data.tasks}
+          selectedClient={selectedClient}
+          onSelect={selectClient}
+          search={clientSearch}
+          onSearch={setClientSearch}
+        />
+        <main className="flex-1 overflow-y-auto">
+          {!selectedClient ? (
+            <EmptyState globalStats={globalStats} />
+          ) : (
+            <div className="p-6 max-w-5xl mx-auto">
+              <div className="flex items-start justify-between mb-6">
+                <div>
+                  <h1 className="text-2xl font-black text-gray-900">{selectedClient.company_name}</h1>
+                  <p className="text-gray-500 text-sm mt-0.5">
+                    {selectedClient.entity_type} · {selectedClient.country}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowAddModal(true)}
+                  className="bg-slate-900 text-white px-4 py-2.5 rounded-xl text-sm font-bold hover:bg-slate-700 transition-colors flex items-center gap-2"
                 >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+                  <span className="text-lg leading-none">+</span> Add Task
+                </button>
+              </div>
+              <StatsRow stats={stats} />
+              <TaskFilters
+                filterStatus={filterStatus}
+                filterCategory={filterCategory}
+                search={search}
+                sortBy={sortBy}
+                onStatus={setFilterStatus}
+                onCategory={setFilterCategory}
+                onSearch={setSearch}
+                onSort={setSortBy}
+              />
+              <div className="text-xs text-gray-400 font-semibold mb-3">
+                Showing {filteredTasks.length} tasks
+                {filteredTasks.filter(t => t.status !== "Completed" && new Date(t.due_date) < new Date()).length > 0 && (
+                  <span className="ml-2 text-red-500">
+                    · {filteredTasks.filter(t => t.status !== "Completed" && new Date(t.due_date) < new Date()).length} overdue
+                  </span>
+                )}
+              </div>
+              {filteredTasks.length === 0 ? (
+                <div className="text-center py-16 text-gray-400">
+                  <div className="text-4xl mb-3">🎉</div>
+                  <div className="font-bold">No tasks found</div>
+                  <div className="text-sm mt-1">Try adjusting filters or add a new task.</div>
+                </div>
+              ) : (
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {filteredTasks.map(task => (
+                    <TaskCard key={task.id} task={task} onStatusChange={updateTaskStatus} />
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </main>
+      </div>
+      {showAddModal && (
+        <AddTaskModal
+          clientId={selectedClient?.id}
+          onAdd={addTask}
+          onClose={() => setShowAddModal(false)}
+        />
+      )}
+    </div>
+  );
 }
-
-export default App
