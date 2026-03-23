@@ -1,44 +1,354 @@
 {
   "clients": [
-    { "id": "c1", "company_name": "Tata Consultancy Services", "country": "India", "entity_type": "Public Ltd" },
-    { "id": "c2", "company_name": "Nykaa Fashion Pvt Ltd", "country": "India", "entity_type": "Private Ltd" },
-    { "id": "c3", "company_name": "Groww Investments", "country": "India", "entity_type": "Startup" },
-    { "id": "c4", "company_name": "Reliance Retail Ltd", "country": "India", "entity_type": "Public Ltd" },
-    { "id": "c5", "company_name": "Zepto Inc.", "country": "India", "entity_type": "Startup" },
-    { "id": "c6", "company_name": "Razorpay Software Pvt Ltd", "country": "India", "entity_type": "Private Ltd" },
-    { "id": "c7", "company_name": "Ola Electric Mobility", "country": "India", "entity_type": "Public Ltd" },
-    { "id": "c8", "company_name": "CRED Fintech Pvt Ltd", "country": "India", "entity_type": "Startup" }
+    {
+      "id": "c1",
+      "company_name": "Tata Consultancy Services",
+      "country": "India",
+      "entity_type": "Public Ltd"
+    },
+    {
+      "id": "c2",
+      "company_name": "Nykaa Fashion Pvt Ltd",
+      "country": "India",
+      "entity_type": "Private Ltd"
+    },
+    {
+      "id": "c3",
+      "company_name": "Groww Investments",
+      "country": "India",
+      "entity_type": "Startup"
+    },
+    {
+      "id": "c4",
+      "company_name": "Reliance Retail Ltd",
+      "country": "India",
+      "entity_type": "Public Ltd"
+    },
+    {
+      "id": "c5",
+      "company_name": "Zepto Inc.",
+      "country": "India",
+      "entity_type": "Startup"
+    },
+    {
+      "id": "c6",
+      "company_name": "Razorpay Software Pvt Ltd",
+      "country": "India",
+      "entity_type": "Private Ltd"
+    },
+    {
+      "id": "c7",
+      "company_name": "Ola Electric Mobility",
+      "country": "India",
+      "entity_type": "Public Ltd"
+    },
+    {
+      "id": "c8",
+      "company_name": "CRED Fintech Pvt Ltd",
+      "country": "India",
+      "entity_type": "Startup"
+    }
   ],
   "tasks": [
-    { "id": "t1",  "client_id": "c1", "title": "GST Filing Q4",              "description": "File quarterly GST returns for Q4 FY2025-26",           "category": "Tax",        "due_date": "2026-03-17", "status": "Pending",     "priority": "High" },
-    { "id": "t2",  "client_id": "c1", "title": "TDS Return March",            "description": "Submit TDS deduction returns for March 2026",           "category": "Tax",        "due_date": "2026-03-25", "status": "Completed",   "priority": "Medium" },
-    { "id": "t3",  "client_id": "c1", "title": "Annual ROC Filing",           "description": "File ROC annual compliance report with MCA portal",     "category": "Filing",     "due_date": "2026-03-20", "status": "Pending",     "priority": "Critical" },
-    { "id": "t4",  "client_id": "c1", "title": "ESIC Monthly Return",         "description": "Submit employee state insurance contribution for March", "category": "Payroll",    "due_date": "2026-03-29", "status": "In Progress", "priority": "Medium" },
-    { "id": "t5",  "client_id": "c1", "title": "Advance Tax Q4 Installment",  "description": "Pay Q4 advance income tax installment before deadline",  "category": "Tax",        "due_date": "2026-03-15", "status": "Pending",     "priority": "Critical" },
-    { "id": "t6",  "client_id": "c2", "title": "GST Reconciliation Mar",      "description": "Reconcile GSTR-2A with purchase register for March",    "category": "Tax",        "due_date": "2026-03-21", "status": "Pending",     "priority": "High" },
-    { "id": "t7",  "client_id": "c2", "title": "PF Challan April",            "description": "Deposit provident fund contribution for April 2026",    "category": "Payroll",    "due_date": "2026-03-24", "status": "Pending",     "priority": "High" },
-    { "id": "t8",  "client_id": "c2", "title": "Board Meeting Minutes",       "description": "Prepare and file Q1 board meeting minutes with MCA",    "category": "Corporate",  "due_date": "2026-04-01", "status": "In Progress", "priority": "Low" },
-    { "id": "t9",  "client_id": "c2", "title": "Director KYC Renewal",        "description": "Renew Director Identification Number KYC for FY26",     "category": "Corporate",  "due_date": "2026-03-31", "status": "Pending",     "priority": "High" },
-    { "id": "t10", "client_id": "c2", "title": "PT Monthly Challan",          "description": "Pay professional tax challan for March 2026",           "category": "Payroll",    "due_date": "2026-03-20", "status": "Completed",   "priority": "Medium" },
-    { "id": "t11", "client_id": "c3", "title": "Startup India Renewal",       "description": "Renew Startup India DPIIT recognition certificate",     "category": "Filing",     "due_date": "2026-03-14", "status": "Pending",     "priority": "Critical" },
-    { "id": "t12", "client_id": "c3", "title": "Income Tax Advance Q1",       "description": "Pay Q1 FY2026-27 advance income tax installment",       "category": "Tax",        "due_date": "2026-03-27", "status": "Pending",     "priority": "High" },
-    { "id": "t13", "client_id": "c3", "title": "ESOP Compliance Filing",      "description": "File ESOP grant details with ROC under Companies Act",   "category": "Corporate",  "due_date": "2026-04-10", "status": "In Progress", "priority": "Medium" },
-    { "id": "t14", "client_id": "c4", "title": "Quarterly Audit Report",      "description": "Submit Q4 internal audit findings report to the board",  "category": "Audit",      "due_date": "2026-04-06", "status": "In Progress", "priority": "High" },
-    { "id": "t15", "client_id": "c4", "title": "SEBI Compliance Filing",      "description": "File periodic SEBI compliance certificate for Q4",       "category": "Regulatory", "due_date": "2026-03-19", "status": "Pending",     "priority": "Critical" },
-    { "id": "t16", "client_id": "c4", "title": "Annual Report Preparation",   "description": "Draft and finalize FY2025-26 annual report for AGM",    "category": "Corporate",  "due_date": "2026-04-15", "status": "Pending",     "priority": "High" },
-    { "id": "t17", "client_id": "c4", "title": "Transfer Pricing Report",     "description": "Prepare transfer pricing documentation for AY2025-26",   "category": "Audit",      "due_date": "2026-04-30", "status": "Pending",     "priority": "Medium" },
-    { "id": "t18", "client_id": "c5", "title": "DPIIT Registration",          "description": "Complete DPIIT startup recognition registration process", "category": "Filing",     "due_date": "2026-03-23", "status": "Completed",   "priority": "High" },
-    { "id": "t19", "client_id": "c5", "title": "GST Registration Renewal",    "description": "Renew GST registration for new financial year 2026-27",  "category": "Tax",        "due_date": "2026-03-18", "status": "Pending",     "priority": "High" },
-    { "id": "t20", "client_id": "c5", "title": "Founders Agreement Update",   "description": "Update and notarize founders agreement for new round",   "category": "Corporate",  "due_date": "2026-04-05", "status": "Pending",     "priority": "Medium" },
-    { "id": "t21", "client_id": "c6", "title": "RBI FEMA Compliance",         "description": "File FEMA returns for foreign investment received",       "category": "Regulatory", "due_date": "2026-03-22", "status": "Pending",     "priority": "Critical" },
-    { "id": "t22", "client_id": "c6", "title": "GST ITC Reconciliation",      "description": "Reconcile input tax credit for Q4 FY2025-26",            "category": "Tax",        "due_date": "2026-03-28", "status": "In Progress", "priority": "High" },
-    { "id": "t23", "client_id": "c6", "title": "TDS Q4 Return Filing",        "description": "File TDS returns for Q4 across all deductee categories", "category": "Tax",        "due_date": "2026-03-31", "status": "Pending",     "priority": "High" },
-    { "id": "t24", "client_id": "c6", "title": "PCI DSS Audit",               "description": "Complete annual PCI DSS compliance audit for payments",   "category": "Audit",      "due_date": "2026-04-20", "status": "Pending",     "priority": "Medium" },
-    { "id": "t25", "client_id": "c7", "title": "EV Subsidy Claim Filing",     "description": "File FAME-II subsidy claims for Q4 EV sales",            "category": "Regulatory", "due_date": "2026-03-25", "status": "Pending",     "priority": "Critical" },
-    { "id": "t26", "client_id": "c7", "title": "GST Annual Return GSTR-9",    "description": "File annual GST return GSTR-9 for FY2025-26",            "category": "Tax",        "due_date": "2026-04-30", "status": "Pending",     "priority": "High" },
-    { "id": "t27", "client_id": "c7", "title": "Statutory Audit Q4",          "description": "Complete Q4 statutory audit with external auditors",      "category": "Audit",      "due_date": "2026-04-10", "status": "In Progress", "priority": "High" },
-    { "id": "t28", "client_id": "c8", "title": "RBI NBFC Compliance",         "description": "Submit quarterly NBFC compliance returns to RBI",         "category": "Regulatory", "due_date": "2026-03-20", "status": "Pending",     "priority": "Critical" },
-    { "id": "t29", "client_id": "c8", "title": "GST Filing March",            "description": "File GSTR-1 and GSTR-3B for March 2026",                 "category": "Tax",        "due_date": "2026-03-22", "status": "Completed",   "priority": "High" },
-    { "id": "t30", "client_id": "c8", "title": "Credit Bureau Reporting",     "description": "Submit monthly credit data to CIBIL and Experian",        "category": "Regulatory", "due_date": "2026-03-25", "status": "Pending",     "priority": "High" }
+    {
+      "id": "t1",
+      "client_id": "c1",
+      "title": "GST Filing Q4",
+      "description": "File quarterly GST returns for Q4 FY2025-26",
+      "category": "Tax",
+      "due_date": "2026-03-17",
+      "status": "Pending",
+      "priority": "High"
+    },
+    {
+      "id": "t2",
+      "client_id": "c1",
+      "title": "TDS Return March",
+      "description": "Submit TDS deduction returns for March 2026",
+      "category": "Tax",
+      "due_date": "2026-03-25",
+      "status": "Completed",
+      "priority": "Medium"
+    },
+    {
+      "id": "t3",
+      "client_id": "c1",
+      "title": "Annual ROC Filing",
+      "description": "File ROC annual compliance report with MCA portal",
+      "category": "Filing",
+      "due_date": "2026-03-20",
+      "status": "Pending",
+      "priority": "Critical"
+    },
+    {
+      "id": "t4",
+      "client_id": "c1",
+      "title": "ESIC Monthly Return",
+      "description": "Submit employee state insurance contribution for March",
+      "category": "Payroll",
+      "due_date": "2026-03-29",
+      "status": "In Progress",
+      "priority": "Medium"
+    },
+    {
+      "id": "t5",
+      "client_id": "c1",
+      "title": "Advance Tax Q4 Installment",
+      "description": "Pay Q4 advance income tax installment before deadline",
+      "category": "Tax",
+      "due_date": "2026-03-15",
+      "status": "In Progress",
+      "priority": "Critical"
+    },
+    {
+      "id": "t6",
+      "client_id": "c2",
+      "title": "GST Reconciliation Mar",
+      "description": "Reconcile GSTR-2A with purchase register for March",
+      "category": "Tax",
+      "due_date": "2026-03-21",
+      "status": "Pending",
+      "priority": "High"
+    },
+    {
+      "id": "t7",
+      "client_id": "c2",
+      "title": "PF Challan April",
+      "description": "Deposit provident fund contribution for April 2026",
+      "category": "Payroll",
+      "due_date": "2026-03-24",
+      "status": "Pending",
+      "priority": "High"
+    },
+    {
+      "id": "t8",
+      "client_id": "c2",
+      "title": "Board Meeting Minutes",
+      "description": "Prepare and file Q1 board meeting minutes with MCA",
+      "category": "Corporate",
+      "due_date": "2026-04-01",
+      "status": "In Progress",
+      "priority": "Low"
+    },
+    {
+      "id": "t9",
+      "client_id": "c2",
+      "title": "Director KYC Renewal",
+      "description": "Renew Director Identification Number KYC for FY26",
+      "category": "Corporate",
+      "due_date": "2026-03-31",
+      "status": "Pending",
+      "priority": "High"
+    },
+    {
+      "id": "t10",
+      "client_id": "c2",
+      "title": "PT Monthly Challan",
+      "description": "Pay professional tax challan for March 2026",
+      "category": "Payroll",
+      "due_date": "2026-03-20",
+      "status": "Completed",
+      "priority": "Medium"
+    },
+    {
+      "id": "t11",
+      "client_id": "c3",
+      "title": "Startup India Renewal",
+      "description": "Renew Startup India DPIIT recognition certificate",
+      "category": "Filing",
+      "due_date": "2026-03-14",
+      "status": "Pending",
+      "priority": "Critical"
+    },
+    {
+      "id": "t12",
+      "client_id": "c3",
+      "title": "Income Tax Advance Q1",
+      "description": "Pay Q1 FY2026-27 advance income tax installment",
+      "category": "Tax",
+      "due_date": "2026-03-27",
+      "status": "Pending",
+      "priority": "High"
+    },
+    {
+      "id": "t13",
+      "client_id": "c3",
+      "title": "ESOP Compliance Filing",
+      "description": "File ESOP grant details with ROC under Companies Act",
+      "category": "Corporate",
+      "due_date": "2026-04-10",
+      "status": "In Progress",
+      "priority": "Medium"
+    },
+    {
+      "id": "t14",
+      "client_id": "c4",
+      "title": "Quarterly Audit Report",
+      "description": "Submit Q4 internal audit findings report to the board",
+      "category": "Audit",
+      "due_date": "2026-04-06",
+      "status": "In Progress",
+      "priority": "High"
+    },
+    {
+      "id": "t15",
+      "client_id": "c4",
+      "title": "SEBI Compliance Filing",
+      "description": "File periodic SEBI compliance certificate for Q4",
+      "category": "Regulatory",
+      "due_date": "2026-03-19",
+      "status": "Pending",
+      "priority": "Critical"
+    },
+    {
+      "id": "t16",
+      "client_id": "c4",
+      "title": "Annual Report Preparation",
+      "description": "Draft and finalize FY2025-26 annual report for AGM",
+      "category": "Corporate",
+      "due_date": "2026-04-15",
+      "status": "Pending",
+      "priority": "High"
+    },
+    {
+      "id": "t17",
+      "client_id": "c4",
+      "title": "Transfer Pricing Report",
+      "description": "Prepare transfer pricing documentation for AY2025-26",
+      "category": "Audit",
+      "due_date": "2026-04-30",
+      "status": "Pending",
+      "priority": "Medium"
+    },
+    {
+      "id": "t18",
+      "client_id": "c5",
+      "title": "DPIIT Registration",
+      "description": "Complete DPIIT startup recognition registration process",
+      "category": "Filing",
+      "due_date": "2026-03-23",
+      "status": "Completed",
+      "priority": "High"
+    },
+    {
+      "id": "t19",
+      "client_id": "c5",
+      "title": "GST Registration Renewal",
+      "description": "Renew GST registration for new financial year 2026-27",
+      "category": "Tax",
+      "due_date": "2026-03-18",
+      "status": "Pending",
+      "priority": "High"
+    },
+    {
+      "id": "t20",
+      "client_id": "c5",
+      "title": "Founders Agreement Update",
+      "description": "Update and notarize founders agreement for new round",
+      "category": "Corporate",
+      "due_date": "2026-04-05",
+      "status": "Pending",
+      "priority": "Medium"
+    },
+    {
+      "id": "t21",
+      "client_id": "c6",
+      "title": "RBI FEMA Compliance",
+      "description": "File FEMA returns for foreign investment received",
+      "category": "Regulatory",
+      "due_date": "2026-03-22",
+      "status": "Pending",
+      "priority": "Critical"
+    },
+    {
+      "id": "t22",
+      "client_id": "c6",
+      "title": "GST ITC Reconciliation",
+      "description": "Reconcile input tax credit for Q4 FY2025-26",
+      "category": "Tax",
+      "due_date": "2026-03-28",
+      "status": "In Progress",
+      "priority": "High"
+    },
+    {
+      "id": "t23",
+      "client_id": "c6",
+      "title": "TDS Q4 Return Filing",
+      "description": "File TDS returns for Q4 across all deductee categories",
+      "category": "Tax",
+      "due_date": "2026-03-31",
+      "status": "Pending",
+      "priority": "High"
+    },
+    {
+      "id": "t24",
+      "client_id": "c6",
+      "title": "PCI DSS Audit",
+      "description": "Complete annual PCI DSS compliance audit for payments",
+      "category": "Audit",
+      "due_date": "2026-04-20",
+      "status": "Pending",
+      "priority": "Medium"
+    },
+    {
+      "id": "t25",
+      "client_id": "c7",
+      "title": "EV Subsidy Claim Filing",
+      "description": "File FAME-II subsidy claims for Q4 EV sales",
+      "category": "Regulatory",
+      "due_date": "2026-03-25",
+      "status": "Pending",
+      "priority": "Critical"
+    },
+    {
+      "id": "t26",
+      "client_id": "c7",
+      "title": "GST Annual Return GSTR-9",
+      "description": "File annual GST return GSTR-9 for FY2025-26",
+      "category": "Tax",
+      "due_date": "2026-04-30",
+      "status": "Pending",
+      "priority": "High"
+    },
+    {
+      "id": "t27",
+      "client_id": "c7",
+      "title": "Statutory Audit Q4",
+      "description": "Complete Q4 statutory audit with external auditors",
+      "category": "Audit",
+      "due_date": "2026-04-10",
+      "status": "In Progress",
+      "priority": "High"
+    },
+    {
+      "id": "t28",
+      "client_id": "c8",
+      "title": "RBI NBFC Compliance",
+      "description": "Submit quarterly NBFC compliance returns to RBI",
+      "category": "Regulatory",
+      "due_date": "2026-03-20",
+      "status": "Pending",
+      "priority": "Critical"
+    },
+    {
+      "id": "t29",
+      "client_id": "c8",
+      "title": "GST Filing March",
+      "description": "File GSTR-1 and GSTR-3B for March 2026",
+      "category": "Tax",
+      "due_date": "2026-03-22",
+      "status": "Completed",
+      "priority": "High"
+    },
+    {
+      "id": "t30",
+      "client_id": "c8",
+      "title": "Credit Bureau Reporting",
+      "description": "Submit monthly credit data to CIBIL and Experian",
+      "category": "Regulatory",
+      "due_date": "2026-03-25",
+      "status": "Pending",
+      "priority": "High"
+    }
   ]
 }
