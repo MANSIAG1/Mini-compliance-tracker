@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { PRIORITIES } from "../data/seedData";
 import { isOverdue } from "../utils/helpers";
 
-const API = "http://localhost:5000/api";
+const API = "https://mini-compliance-tracker-i72b.onrender.com/api";
 
 export function useCompliance() {
   const [clients,        setClients]        = useState([]);
